@@ -1,0 +1,94 @@
+swagger: '2.0'
+info:
+  description: Aplicação Desafio JAVA
+  version: 0.0.1
+  title: Mars Hover
+  contact:
+    email: hebertsouza87@gmail.com
+tags:
+  - name: rest
+    description: Endpoint com retorno em REST
+  - name: string
+    description: Endpoint com retorno em Texto
+paths:
+  '/rest/mars/{commands}':
+    get:
+      tags:
+        - rest
+      description: 'Consulta a posição final do Hover, de acordo com os comandos enviados.'
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: commands
+          type: string
+          enum:
+            - M
+            - L
+            - R
+          description: >-
+            Comandos a serem enviados.<br> Comandos permitidos:<br> M > Anda
+            para frente<br> R > Gira 90° para a direita<br> L > Gira 90° para a
+            esquerda
+          required: true
+      responses:
+        '200':
+          description: Sucesso
+          schema:
+            $ref: '#/definitions/Mars'
+        '400':
+          description: Requisição inválida
+          schema:
+            $ref: '#/definitions/BadRequest'
+            
+  '/string/mars/{commands}':
+    get:
+      tags:
+        - string
+      description: 'Consulta a posição final do Hover, de acordo com os comandos enviados.'
+      produces:
+        - plain/text
+      parameters:
+        - in: path
+          name: commands
+          type: string
+          enum:
+            - M
+            - L
+            - R
+          description: >-
+            Comandos a serem enviados.<br> Comandos permitidos:<br> M > Anda
+            para frente<br> R > Gira 90° para a direita<br> L > Gira 90° para a
+            esquerda
+          required: true
+      responses:
+        '200':
+          description: >-
+            Texto plano de com a posição final do Hover.<br> Formato: (x,y,direção)
+        '400':
+          description: Requisição inválida
+definitions:
+  Mars:
+    type: object
+    properties:
+      x:
+        type: integer
+        description: Posiçao final do Hover no eixo X (horizontal)
+      y:
+        type: integer
+        description: Posiçao final do Hover no eixo Y (vertical)
+      direction:
+        type: string
+        enum:
+          - N
+          - E
+          - S
+          - W
+          
+  BadRequest:
+    type: object
+    properties:
+      httpStatusCode:
+        type: integer
+      message:
+        type: string
