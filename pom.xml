@@ -39,6 +39,13 @@
             <scope>test</scope>
             <version>2.44.0</version>
         </dependency>
+			<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<configuration>
+				<executable>true</executable>
+			</configuration>
+			</plugin>
         <dependency>
             <groupId>com.opera</groupId>
             <artifactId>operadriver</artifactId>
