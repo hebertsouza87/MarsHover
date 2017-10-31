@@ -47,6 +47,7 @@
 				<executable>true</executable>
 			</configuration>
 			</plugin>
+		</dependency>
         <dependency>
             <groupId>com.opera</groupId>
             <artifactId>operadriver</artifactId>
