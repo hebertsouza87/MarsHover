@@ -40,6 +40,7 @@
             <scope>test</scope>
             <version>2.44.0</version>
         </dependency>
+		<dependency>
 			<plugin>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-maven-plugin</artifactId>
